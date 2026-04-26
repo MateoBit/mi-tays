@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestro primer mess 💖</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ff9a9e, #fad0c4);
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* 💖 CORAZONES */
+.corazon {
+    position: fixed;
+    bottom: -50px;
+    font-size: 20px;
+    animation: flotar 8s linear infinite;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+/* CONTENIDO ENCIMA */
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h1 {
+    text-align: center;
+    color: #ff4d6d;
+}
+
+.sub {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.boton {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.boton:hover {
+    transform: scale(1.05);
+    background: #ff1f4b;
+}
+
+.parrafo {
+    background: #fff0f3;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 15px;
+    display: none;
+    transform: rotateY(90deg);
+    transform-origin: left;
+}
+
+.parrafo.mostrar {
+    display: block;
+    animation: abrir 0.8s forwards;
+}
+
+@keyframes abrir {
+    from {
+        transform: rotateY(90deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+.contador {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #ff4d6d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Nuestro primer mess 💖</h1>
+<div class="sub">
+De: Tu Teo 💌<br>
+Para: Mi Tays &lt;3
+</div>
+
+<button class="boton" onclick="mostrar(1)">Mi amorcito ❤✨ (toca aqui)</button>
+<div id="p1" class="parrafo">Holaa mi amor, ya ha pasado un mes desde que empezó toda esta relación...</div>
+
+<button class="boton" onclick="mostrar(2)">Mi vida ❤✨ (toca aqui)</button>
+<div id="p2" class="parrafo">Quiero decirte que no me arrepiento de nada mi vida...</div>
+
+<button class="boton" onclick="mostrar(3)">Mi novia ❤✨ (toca aqui)</button>
+<div id="p3" class="parrafo">Te amo desde el primer dia que somos novios...</div>
+
+<button class="boton" onclick="mostrar(4)">Mi cielo ❤✨ (toca aqui)</button>
+<div id="p4" class="parrafo">Se que aun no llevamos mucho tiempo juntos...</div>
+
+<button class="boton" onclick="mostrar(5)">Mi niña ❤✨ (toca aqui)</button>
+<div id="p5" class="parrafo">Aun nos queda muchoo por delante amor...</div>
+
+<button class="boton" onclick="mostrar(6)">Mi princesa ❤✨ (toca aqui)</button>
+<div id="p6" class="parrafo">No sabes lo muchooo que te amooo...</div>
+
+<button class="boton" onclick="mostrar(7)">Mi Tays ❤✨ (toca aqui)</button>
+<div id="p7" class="parrafo">Con el tiempo he sabido algoo...</div>
+
+<button class="boton" onclick="mostrar(8)">Mi todo ❤✨ (toca aqui)</button>
+<div id="p8" class="parrafo">Yy weno amor, hasta aqui llego este textooo...</div>
+
+<button class="boton" onclick="mostrar(9)">Te amo 💖 (toca aqui)</button>
+<div id="p9" class="parrafo">💖 Gracias por existir y por hacerme tan feliz 💖</div>
+
+<div class="contador" id="contador"></div>
+
+</div>
+
+<script>
+function mostrar(num){
+    document.getElementById("p"+num).classList.add("mostrar");
+}
+
+/* CONTADOR */
+function actualizarContador() {
+    const inicio = new Date("March 27, 2026 21:59:00");
+    const ahora = new Date();
+    const diff = ahora - inicio;
+
+    const dias = Math.floor(diff / (1000*60*60*24));
+    const horas = Math.floor((diff / (1000*60*60)) % 24);
+    const minutos = Math.floor((diff / (1000*60)) % 60);
+    const segundos = Math.floor((diff / 1000) % 60);
+
+    document.getElementById("contador").innerHTML =
+    `💖 Llevamos juntos: ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos 💖`;
+}
+setInterval(actualizarContador, 1000);
+actualizarContador();
+
+/* GENERAR CORAZONES */
+function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "💖";
+
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.fontSize = (Math.random() * 20 + 15) + "px";
+    corazon.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 8000);
+}
+
+setInterval(crearCorazon, 400);
+</script>
+
+</body>
+</html>
